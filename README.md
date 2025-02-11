@@ -1,50 +1,106 @@
-# React + TypeScript + Vite
+# 🎉 E_Store-Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🌟 **Ecommerce Store Frontend**
+The **frontend interface** for the **E_Store-Service-API**, designed for an **electronic components & products eCommerce platform**. This application offers a seamless user experience with **real-time notifications, cloud storage, online payments, and optimized performance**.
 
-Currently, two official plugins are available:
+**📌 Built with:** `React + TypeScript + Vite`  
+**📌 State Management:** `Redux Toolkit + Redux Saga`  
+**📌 UI Styling:** `TailwindCSS`  
+**📌 Payment Gateway:** `VNPay | ZaloPay`  
+**📌 Cloud Services:** `Firebase Storage | Firebase Cloud Messaging`  
+**📌 Authentication:** `JWT Token`  
+**📌 API Communication:** `Axios + RTK Query`  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌟 **Features**  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 🔐 **Admin Panel**
+👉 **Authentication & Authorization**  
+- 🔑 Secure login & logout  
+- ♻️ Password reset  
+- 🔒 Role-based access control  
 
-- Configure the top-level `parserOptions` property like this:
+👉 **System Management**  
+- 🧑‍💼 Manage user accounts  
+- 🌂 Manage product categories  
+- 🛒 Manage product listings  
+- 🎉 Manage promotions & discounts  
+- 📦 Order management (Accept, Reject, Deliver)  
+- 📊 Sales & revenue analytics  
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+👉 **Marketing & Feedback**  
+- 📢 View & respond to customer reviews  
+- 📜 Manage advertisements & banners  
+
+👉 **Payment Integrations**  
+- 💳 **VNPay**: Supports local banking transactions  
+- 💰 **ZaloPay**: QR code & e-wallet payments  
+
+👉 **Performance Optimization & Background Jobs**  
+- 🚀 **Redux Saga**: Efficient API call handling & side effects  
+- ⚡ **RTK Query**: Optimized API state management  
+- 🔥 **Firebase Cloud Messaging (FCM)**: Real-time notifications  
+
+---
+
+### 🚴‍♂️ **Customer Panel**
+👉 **User Account & Shopping Experience**  
+- 🔑 Secure login & registration  
+- 🔍 Advanced product search  
+- 🛒 Add/remove items from cart  
+- ✅ Place orders & make payments  
+- 📄 View order details  
+- ❌ Cancel orders before confirmation  
+
+👉 **User Profile & Reviews**  
+- 🧒 Manage personal information  
+- 📜 View order history  
+- 💬 Submit product reviews & ratings  
+
+👉 **Real-time Notifications**  
+- 🔔 **Firebase Cloud Messaging (FCM)**: Receive real-time order updates  
+- 🏢 Get alerts for order status changes  
+
+👉 **Online Payments**  
+- 💳 **VNPay & ZaloPay**  
+- 📲 QR code & internet banking support  
+
+👉 **Cloud Storage**  
+- 💽 **Firebase Storage**: Store product images & user profile pictures  
+
+---
+
+## 🔧 **Technology Stack**
+- **Frontend:** `React + TypeScript + Vite`  
+- **State Management:** `Redux Toolkit + Redux Saga`  
+- **UI Framework:** `TailwindCSS`  
+- **API Communication:** `Axios + RTK Query`  
+- **Authentication:** `JWT Token`  
+- **Payment Integration:** `VNPay, ZaloPay API`  
+- **Cloud Services:** `Firebase Storage, Firebase Cloud Messaging`  
+- **Form Handling & Validation:** `React Hook Form + Zod`  
+- **Routing:** `React Router`  
+
+---
+
+## 🚀 **Getting Started**
+### 1️⃣ **Install Dependencies**
+```sh
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 2️⃣ **Run the Development Server**
+```sh
+npm run dev
 ```
+
+## 📞 **Contact**
+If you have any questions or feedback, feel free to contact:  
+📧 [nguyentantrung1801@gmail.com](mailto:nguyentantrung1801@gmail.com)  
+📌 Or open an **issue** on the project's GitHub repository.  
+
+---
+
+🔥 **THANK YOU FOR USING E_STORE-CLIENT! 🚀**
+
