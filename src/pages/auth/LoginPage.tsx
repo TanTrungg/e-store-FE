@@ -5,31 +5,34 @@ import BannerLogin from "@/assets/banner-login.jpg";
 import { showSuccessAlert } from "@/toastify/toastify";
 import { useDispatch } from "react-redux";
 import { CreateUser } from "@/redux/actions/userAction";
+import { formatPhoneNumber, validateEmail } from "@/utils/helpers";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-
   const [isLogin, setLogin] = useState<boolean>(true);
   const [userLogin, setUserLogin] = useState({
     email: null,
     password: null,
   });
   const [register, setRegister] = useState({
-    reEmail: null,
-    rePassword: null,
-    reFullName: null,
-    rePhoneNumber: null,
+    reEmail: "",
+    rePassword: "",
+    reFullName: "",
+    rePhoneNumber: "",
+    confirmPassword: "",
   });
   const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    if (name === "reEmail" || name === "email") {
+      setErrors((prev) => ({ ...prev, [name]: !validateEmail(value) }));
+    }
     if (isLogin) {
       setUserLogin({ ...userLogin, [name]: value });
     } else {
       setRegister({ ...register, [name]: value });
     }
-    // Xóa lỗi khi người dùng nhập lại
     setErrors((prev) => ({ ...prev, [name]: false }));
   };
 
@@ -44,6 +47,12 @@ const LoginPage = () => {
       Object.entries(register).forEach(([key, value]) => {
         if (!value) newErrors[key] = true;
       });
+      if (register.confirmPassword !== register.rePassword) {
+        newErrors["confirmPassword"] = true;
+      }
+      if (!validateEmail(register.reEmail)) {
+        newErrors["reEmail"] = true;
+      }
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -65,10 +74,6 @@ const LoginPage = () => {
       dispatch(CreateUser(registerUser));
     }
   };
-
-  // useEffect(() => {
-
-  // }, [user]);
 
   return (
     <div
@@ -109,6 +114,9 @@ const LoginPage = () => {
                 />
                 <FaRegUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
+              {errors.email && (
+                <p className="text-red-500 text-sm">Vui lòng nhập email</p>
+              )}
             </div>
             <div className="relative">
               <label htmlFor="" className="block my-1">
@@ -126,6 +134,9 @@ const LoginPage = () => {
                 />
                 <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
+              {errors.password && (
+                <p className="text-red-500 text-sm">Vui lòng nhập mật khẩu</p>
+              )}
             </div>
           </div>
         </div>
@@ -155,6 +166,9 @@ const LoginPage = () => {
                 />
                 <FaRegUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
+              {errors.reFullName && (
+                <p className="text-red-500 text-sm">Vui lòng nhập tên</p>
+              )}
             </div>
             <div className="relative">
               <label htmlFor="" className="block my-1">
@@ -162,7 +176,6 @@ const LoginPage = () => {
               </label>
               <div className="relative">
                 <input
-                  maxLength={10}
                   type="text"
                   className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:border-violet-400 pl-10 ${
                     errors.rePhoneNumber ? "border-red-500 animate-shake" : ""
@@ -170,9 +183,15 @@ const LoginPage = () => {
                   placeholder="Số điện thoại"
                   name="rePhoneNumber"
                   onChange={handleChange}
+                  value={formatPhoneNumber(register.rePhoneNumber)}
                 />
                 <FaPhoneAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
+              {errors.rePhoneNumber && (
+                <p className="text-red-500 text-sm">
+                  Vui lòng nhập số điện thoại
+                </p>
+              )}
             </div>
 
             <div className="relative">
@@ -191,6 +210,9 @@ const LoginPage = () => {
                 />
                 <FaMailBulk className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
+              {errors.reEmail && (
+                <p className="text-red-500 text-sm">Vui lòng nhập email</p>
+              )}
             </div>
 
             <div className="relative">
@@ -209,6 +231,9 @@ const LoginPage = () => {
                 />
                 <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
+              {errors.rePassword && (
+                <p className="text-red-500 text-sm">Vui lòng nhập mật khẩu</p>
+              )}
             </div>
 
             <div className="relative">
@@ -227,6 +252,9 @@ const LoginPage = () => {
                 />
                 <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
+              {errors.confirmPassword && (
+                <p className="text-red-500 text-sm">Mật khẩu chưa khớp</p>
+              )}
             </div>
           </div>
         </div>

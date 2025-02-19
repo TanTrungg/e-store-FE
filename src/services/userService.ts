@@ -11,11 +11,6 @@ export class Private {
     const axiosPrivate = useAxios();
     return await axiosPrivate.post("/users", data);
   };
-
-  getUserLogin = async () => {
-    const axiosPrivate = useAxios();
-    return await axiosPrivate.get("/auth");
-  };
 }
 
 export const userService = new Private();

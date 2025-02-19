@@ -13,11 +13,10 @@ import {
 } from "@/toastify/toastify";
 import { RegisterState } from "@/types/auth/AuthTypes";
 import { AxiosResponse } from "axios";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, select, takeEvery } from "redux-saga/effects";
 
 function* GetAllUserSaga(payload: { type: string }) {
   try {
-    console.log("payload", payload.type);
     const res: AxiosResponse = yield call(userService.getUsers);
     const { status, data } = res;
     if (data && status === 200) {
